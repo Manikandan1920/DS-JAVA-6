@@ -1,0 +1,56 @@
+public class SelectionSortRMS {
+    public static int comparator(float[][] arr, int index1, int index2) {
+        double rms1 = Math.sqrt(0.5 * (arr[index1][0]*arr[index1][0] + arr[index1][1]*arr[index1][1]));
+        double rms2 = Math.sqrt(0.5 * (arr[index2][0]*arr[index2][0] + arr[index2][1]*arr[index2][1]));
+
+        if (rms1 > rms2) return -1;
+        else if (rms1 < rms2) return 1;
+        else {
+            if (arr[index1][1] > arr[index2][1]) return -1;
+            else if (arr[index1][1] < arr[index2][1]) return 1;
+            else return 0;
+        }
+    }
+
+    public static int selectionSort2(float[][] arr, int n) {
+        int break_point = n - 1;
+        while (break_point > 0 && comparator(arr, break_point - 1, break_point) <= 0) {
+            break_point--;
+        }
+
+        for (int i = 0; i < break_point; i++) {
+            int minIdx = i;
+            for (int j = i + 1; j < break_point; j++) {
+                if (comparator(arr, j, minIdx) < 0) {
+                    minIdx = j;
+                }
+            }
+            float[] temp = arr[i];
+            arr[i] = arr[minIdx];
+            arr[minIdx] = temp;
+        }
+
+        return break_point;
+    }
+
+    public static void main(String[] args) {
+        float[][] marks = {
+            {90, 30}, {60, 20}, {30, 40}, {60, 20}, {10, 90}, {0, 100}, {60, 60}, {50, 10}
+        };
+        int bp = selectionSort2(marks, marks.length);
+        System.out.println("Break Point: " + bp);
+    }
+}
+nput:
+Enter marks for 8 students (2 values each):
+90 30
+60 20
+30 40
+60 20
+10 90
+0 100
+60 60
+50 10
+
+Output:
+Break Point: 5
