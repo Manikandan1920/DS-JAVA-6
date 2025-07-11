@@ -1,0 +1,19 @@
+public class ArraySimulation {
+    public static int[] getArray1D(int n) {
+        return new int[n];
+    }
+
+    public static int[][] getArray2D(int m, int n) {
+        int[][] matrix = new int[m][];
+        for (int i = 0; i < m; i++) {
+            matrix[i] = getArray1D(n);
+        }
+        return matrix;
+    }
+
+    public static void main(String[] args) {
+        int[][] arr = getArray2D(3, 4);
+        arr[1][2] = 42;
+        System.out.println("Element at [1][2]: " + arr[1][2]);
+    }
+}
