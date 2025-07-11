@@ -1,0 +1,22 @@
+class LinkedNodes {
+    int nodeId;
+    LinkedNodes next;
+    LinkedNodes(int nodeId) { this.nodeId = nodeId; }
+}
+
+class MyNode {
+    int id;
+    LinkedNodes incoming, outgoing;
+    MyNode(int id) { this.id = id; }
+}
+
+Input:
+Number of nodes: 3
+Add edge: 1 → 2
+Add edge: 2 → 3
+Add edge: 1 → 3
+
+Output:
+Node 1 outgoing: 3 2
+Node 2 incoming: 1
+Node 3 incoming: 2 1
