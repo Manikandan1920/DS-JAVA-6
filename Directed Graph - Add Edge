@@ -1,0 +1,28 @@
+public class GraphOps {
+    public static void initNodes(MyNode[] nodes, int num) {
+        for (int i = 0; i < num; i++) {
+            nodes[i] = new MyNode(i + 1);
+        }
+    }
+
+    public static void addEdge(MyNode[] nodes, int start, int end) {
+        MyNode s = nodes[start - 1], e = nodes[end - 1];
+        if (!exists(s.outgoing, end)) {
+            LinkedNodes o = new LinkedNodes(end);
+            o.next = s.outgoing;
+            s.outgoing = o;
+
+            LinkedNodes in = new LinkedNodes(start);
+            in.next = e.incoming;
+            e.incoming = in;
+        }
+    }
+
+    private static boolean exists(LinkedNodes head, int id) {
+        while (head != null) {
+            if (head.nodeId == id) return true;
+            head = head.next;
+        }
+        return false;
+    }
+}
