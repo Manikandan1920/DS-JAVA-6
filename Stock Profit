@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class StockProfit {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter number of days: ");
+        int n = scanner.nextInt();
+        int[] prices = new int[n];
+
+        System.out.println("Enter prices:");
+        for (int i = 0; i < n; i++) {
+            prices[i] = scanner.nextInt();
+        }
+
+        int maxProfit = Integer.MIN_VALUE;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = i + 1; j < n; j++) {
+                int profit = prices[j] - prices[i];
+                if (profit > maxProfit) {
+                    maxProfit = profit;
+                }
+            }
+        }
+
+        System.out.println("Maximum profit: " + maxProfit);
+        scanner.close();
+    }
+}
+Enter number of days: 5
+Enter prices:
+67000
+73000
+57000
+63000
+47000
+
+Output:
+Maximum profit: 6000
+(Buy at 57000, sell at 63000)
