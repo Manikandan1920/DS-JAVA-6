@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class SumOfSquares {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int number = scanner.nextInt();
+
+        int result = 0;
+        while (number > 0) {
+            int digit = number % 10;
+            result += digit * digit;
+            number /= 10;
+        }
+
+        System.out.println("Sum of squares of digits: " + result);
+        scanner.close();
+    }
+}
+nput:
+Enter a number: 123
+
+Output:
+Sum of squares of digits: 14
+(1² + 2² + 3² = 1 + 4 + 9 = 14)
